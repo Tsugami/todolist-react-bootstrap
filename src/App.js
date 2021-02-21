@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Container, ListGroup } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
 import { generateID } from './utils/generateID'
-import { AiFillDelete } from 'react-icons/ai'
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -15,6 +15,10 @@ function App() {
     setNewTask('')
   }
 
+  const deleteTask = (taskID) => {
+    setTasks(tasks.filter((task) => task.id !== taskID))
+  }
+
   return (
     <Container>
       <TodoForm
@@ -22,14 +26,7 @@ function App() {
         onChange={(event) => setNewTask(event.target.value)}
         onSubmit={onNewTask}
       />
-      <ListGroup>
-        {tasks.map((task) => (
-          <ListGroup.Item key={task.id}>
-            {task.content}
-            <AiFillDelete />
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <TodoList tasks={tasks} onDelete={deleteTask} />
     </Container>
   )
 }
