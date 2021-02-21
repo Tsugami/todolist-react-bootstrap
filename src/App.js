@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Col } from 'react-bootstrap'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 import { generateID } from './utils/generateID'
@@ -21,12 +21,14 @@ function App() {
 
   return (
     <Container>
-      <TodoForm
-        value={newTask}
-        onChange={(event) => setNewTask(event.target.value)}
-        onSubmit={onNewTask}
-      />
-      <TodoList tasks={tasks} onDelete={deleteTask} />
+      <Col>
+        <TodoForm
+          value={newTask}
+          onChange={(event) => setNewTask(event.target.value)}
+          onSubmit={onNewTask}
+        />
+        <TodoList tasks={tasks} onDelete={deleteTask} />
+      </Col>
     </Container>
   )
 }
