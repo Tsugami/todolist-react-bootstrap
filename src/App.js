@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container, Col } from 'react-bootstrap'
+import { TodoContext } from './store/TodoContext'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
-import { generateID } from './utils/generateID'
 
 function App() {
-  const [tasks, setTasks] = useState([])
   const [newTask, setNewTask] = useState('')
+  const { tasks, remTask, addTask } = useContext(TodoContext)
 
   const onNewTask = (event) => {
     if (!newTask) return
     event.preventDefault()
-    setTasks(tasks.concat({ id: generateID(), content: newTask }))
+    addTask(newTask)
     setNewTask('')
-  }
-
-  const deleteTask = (taskID) => {
-    setTasks(tasks.filter((task) => task.id !== taskID))
   }
 
   return (
@@ -27,7 +23,7 @@ function App() {
           onChange={(event) => setNewTask(event.target.value)}
           onSubmit={onNewTask}
         />
-        <TodoList tasks={tasks} onDelete={deleteTask} />
+        <TodoList tasks={tasks} onDelete={remTask} />
       </Col>
     </Container>
   )
