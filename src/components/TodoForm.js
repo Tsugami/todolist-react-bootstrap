@@ -10,6 +10,7 @@ const TodoForm = ({ onSubmit, value, onChange }) => {
           value={value}
           onChange={onChange}
           placeholder='Add a task...'
+          required
         />
       </Form.Group>
       <Button variant='primary' type='submit'>
