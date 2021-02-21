@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, ListGroup } from 'react-bootstrap'
 import TodoForm from './components/TodoForm'
 import { generateID } from './utils/generateID'
 
@@ -20,6 +20,11 @@ function App() {
         onChange={(event) => setNewTask(event.target.value)}
         onSubmit={onNewTask}
       />
+      <ListGroup>
+        {tasks.map((task) => (
+          <ListGroup.Item key={task.id}>{task.content}</ListGroup.Item>
+        ))}
+      </ListGroup>
     </Container>
   )
 }
