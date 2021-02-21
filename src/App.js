@@ -20,7 +20,7 @@ function App() {
   }
 
   return (
-    <Container>
+    <Container className='p-3'>
       <Col>
         <TodoForm
           value={newTask}
