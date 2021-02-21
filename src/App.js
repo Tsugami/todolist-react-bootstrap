@@ -4,8 +4,6 @@ import TodoForm from './components/TodoForm'
 import { generateID } from './utils/generateID'
 import { AiFillDelete } from 'react-icons/ai'
 
-import './App.css'
-
 function App() {
   const [tasks, setTasks] = useState([])
   const [newTask, setNewTask] = useState('')
