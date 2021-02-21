@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Container, ListGroup } from 'react-bootstrap'
 import TodoForm from './components/TodoForm'
 import { generateID } from './utils/generateID'
+import { AiFillDelete } from 'react-icons/ai'
+
+import './App.css'
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -22,7 +25,10 @@ function App() {
       />
       <ListGroup>
         {tasks.map((task) => (
-          <ListGroup.Item key={task.id}>{task.content}</ListGroup.Item>
+          <ListGroup.Item key={task.id}>
+            {task.content}
+            <AiFillDelete />
+          </ListGroup.Item>
         ))}
       </ListGroup>
     </Container>
