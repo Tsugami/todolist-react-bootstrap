@@ -9,8 +9,8 @@ function App() {
   const { tasks, remTask, addTask } = useContext(TodoContext)
 
   const onNewTask = (event) => {
-    if (!newTask) return
     event.preventDefault()
+    if (!newTask) return
     addTask(newTask)
     setNewTask('')
   }
