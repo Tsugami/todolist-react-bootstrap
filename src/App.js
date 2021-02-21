@@ -9,6 +9,7 @@ function App() {
   const [newTask, setNewTask] = useState('')
 
   const onNewTask = (event) => {
+    if (!newTask) return
     event.preventDefault()
     setTasks(tasks.concat({ id: generateID(), content: newTask }))
     setNewTask('')
